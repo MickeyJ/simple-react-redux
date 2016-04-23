@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { getTodos, addTodo, deleteTodo } from '../../actions/'
+import { 
+  getTodos, 
+  addTodo, 
+  deleteTodo,
+  completeTodo
+} from '../../actions/'
 
 import TodoList from './TodoList'
 
@@ -30,6 +35,9 @@ class TodoComponent extends Component{
   handleDelete(todo_id) {
     this.props.deleteTodo(todo_id);
   }
+  handleComplete(todo_id) {
+    this.props.completeTodo(todo_id)
+  }
   render(){
     require('./todos.scss');
     return(
@@ -48,6 +56,7 @@ class TodoComponent extends Component{
         <TodoList
           todos={this.props.todos}
           handleDelete={this.handleDelete.bind(this)}
+          handleComplete={this.handleComplete.bind(this)}
         />
       </main>
     )
@@ -58,4 +67,6 @@ function mapStateToProps(state){
   return { todos: state.todos.all}
 }
 
-export default connect(mapStateToProps, { getTodos, addTodo, deleteTodo })(TodoComponent);
+export default connect(mapStateToProps, { 
+  getTodos, addTodo, deleteTodo, completeTodo 
+})(TodoComponent);

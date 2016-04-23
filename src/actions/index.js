@@ -9,6 +9,7 @@ let todos = [
 export const GET_TODOS = 'GET_TODOS';
 export const ADD_TODO= 'ADD_TODO';
 export const DELETE_TODO= 'DELETE_TODO';
+export const COMPLETE_TODO= 'COMPLETE_TODO';
 
 export function getTodos(){
   return{
@@ -27,6 +28,13 @@ export function addTodo(todo){
 export function deleteTodo(todo_id){
   return{
     type: DELETE_TODO,
+    payload: todo_id
+  }
+}
+
+export function completeTodo(todo_id){
+  return{
+    type: COMPLETE_TODO,
     payload: todo_id
   }
 }

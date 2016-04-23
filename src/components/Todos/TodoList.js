@@ -13,7 +13,11 @@ const TodoList = props => (
         <tr key={i}>
           <td>{x.id}</td>
           <td>{x.task}</td>
-          <td>{x.complete.toString()}</td>
+          <td>
+            <button onClick={() => props.handleComplete (x.id)}>
+              {x.complete.toString()}
+            </button>
+          </td>
           <td>
             <button onClick={() => props.handleDelete (x.id)}>
               Delete
