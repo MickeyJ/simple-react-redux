@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { getTodos, addTodo } from '../../actions/'
+import { getTodos, addTodo, deleteTodo } from '../../actions/'
+
+import TodoList from './TodoList'
+
+
+const setTodoId = (todos)  =>(
+  todos.reduce((max, x) => Math.max(x.id, max), -1) +1
+);
 
 class TodoComponent extends Component{
   componentWillMount(){
@@ -14,10 +21,14 @@ class TodoComponent extends Component{
     e.preventDefault();
     if(!this.todo.value) return;
     this.props.addTodo({
+      id: setTodoId(this.props.todos),
       task: this.todo.value,
       complete: false
     });
     this.todo.value = '';
+  }
+  handleDelete(todo_id) {
+    this.props.deleteTodo(todo_id);
   }
   render(){
     require('./todos.scss');
@@ -34,11 +45,10 @@ class TodoComponent extends Component{
             Add Todo
           </button>
         </form>
-        <ul className="ten columns">
-          {this.props.todos.map((x, i) =>(
-            <li key={i}>{x.task}</li>
-          ))}
-        </ul>
+        <TodoList
+          todos={this.props.todos}
+          handleDelete={this.handleDelete.bind(this)}
+        />
       </main>
     )
   }
@@ -48,4 +58,4 @@ function mapStateToProps(state){
   return { todos: state.todos.all}
 }
 
-export default connect(mapStateToProps, { getTodos, addTodo })(TodoComponent);
+export default connect(mapStateToProps, { getTodos, addTodo, deleteTodo })(TodoComponent);
