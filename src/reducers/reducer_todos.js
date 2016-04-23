@@ -9,7 +9,6 @@ export default function(state = INITIAL_STATE, action){
       return { ...state, all: action.payload };
 
     case ADD_TODO:
-      console.log(state);
       return { ...state, all: [action.payload, ...state.all] };
     
     default:
