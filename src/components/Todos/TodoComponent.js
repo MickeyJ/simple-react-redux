@@ -20,9 +20,10 @@ class TodoComponent extends Component{
     this.todo.value = '';
   }
   render(){
+    require('./todos.scss');
     return(
-      <main className="row">
-        <form className="row"  onSubmit={(e) => this.handleAddTodo(e)} >
+      <main id="todo-component" className="row">
+        <form className="row" onSubmit={(e) => this.handleAddTodo(e)} >
           <input
             type="text"
             placeholder="Your Todo"
