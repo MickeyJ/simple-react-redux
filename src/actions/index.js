@@ -1,9 +1,9 @@
 
 let todos = [
-  {id: 1, task: 'cook', complete: false},
-  {id: 2, task: 'clean', complete: false},
-  {id: 3, task: 'eat', complete: false},
-  {id: 4, task: 'sleep', complete: false}
+  {id: 4, task: 'cook', complete: false},
+  {id: 3, task: 'clean', complete: false},
+  {id: 2, task: 'eat', complete: false},
+  {id: 1, task: 'sleep', complete: false}
 ];
 
 export const GET_TODOS = 'GET_TODOS';
