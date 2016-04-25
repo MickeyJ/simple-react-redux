@@ -1,12 +1,46 @@
 
+
+@mixin btn-box($d){
+  width: $d;
+  height: $d;
+}
+
 #todo-component{
+
+  .todo-form{
+    margin-bottom: 3%;
+  }
 
   input{
     font-size: 23px;
   }
 
-  li{
-    font-size: 21px;
+  td, th{
+    vertical-align: middle;
   }
+
+  .todo-task{
+    font-size: 22px;
+  }
+
+  .todo-complete{
+    transition: all 0.25s;
+    @include btn-box(60px);
+  }
+  .todo-delete{
+    transition: all 0.25s;
+    background: rgba(253, 255, 189, 0.41);
+    border: 1px solid #ccc;
+    @include btn-box(60px);
+
+    &:hover{
+      background: rgb(253, 255, 189);
+    }
+
+    &:active{
+      background: rgba(255, 252, 115, 0.73);
+    }
+  }
+
 
 }

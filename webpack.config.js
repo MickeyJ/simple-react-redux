@@ -39,7 +39,7 @@ const wpConfig = {
         }
       },
       {
-        test: /\.scss$/,
+        test: [/\.scss$/, /\.css$/],
         loaders: ["style", "css", "sass"],
         exclude: /node_modules/
       }
